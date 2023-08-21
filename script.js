@@ -19,15 +19,20 @@ document.querySelector('.check').addEventListener('click', function() {
     const guess = Number(document.querySelector('.guess').value);
     
     if(!guess){
+        //When there is no guess
         document.querySelector('.message').textContent = 'No Number';
     }
     else if(guess === SecretNumber)
     {
+        //when guess is matched.
         document.querySelector('.message').textContent = "Number Found !! 🙂";
+        document.querySelector('body').style.backgroundColor = '#60b347';
+
+        document.querySelector('.number').style.width = '30rem';
     }
     else if(guess > SecretNumber)
     {
-        
+     //when guess is higher.   
         if(score>1)
         {
             document.querySelector('.message').textContent = "Too High !😒";
@@ -44,6 +49,7 @@ document.querySelector('.check').addEventListener('click', function() {
     }
     else if(guess < SecretNumber)
     {
+        //When guess is lower.
         if(score>1)
         {
             document.querySelector('.message').textContent = "Too Low !😒";
