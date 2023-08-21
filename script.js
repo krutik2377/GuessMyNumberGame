@@ -11,6 +11,7 @@ console.log(document.querySelector('.guess').value);
 document.querySelector('.guess').value = 23; */
 
 const SecretNumber = Math.trunc(Math.random()*20) +1;
+let score = 20;
 
 document.querySelector('.number').textContent = SecretNumber;
 
@@ -26,10 +27,33 @@ document.querySelector('.check').addEventListener('click', function() {
     }
     else if(guess > SecretNumber)
     {
-        document.querySelector('.message').textContent = "Too High !😒";
+        
+        if(score>1)
+        {
+            document.querySelector('.message').textContent = "Too High !😒";
+            score--;
+            document.querySelector('.score').textContent = score;
+            
+        }
+        else
+        {
+            document.querySelector('.message').textContent = "You Lose the Game !";
+            document.querySelector('.score').textContent =0;
+        }
+        
     }
     else if(guess < SecretNumber)
     {
-        document.querySelector('.message').textContent = "Too Low !😒";
+        if(score>1)
+        {
+            document.querySelector('.message').textContent = "Too Low !😒";
+            score--;
+            document.querySelector('.score').textContent = score;
+        }
+        else{
+            document.querySelector('.message').textContent = "You Lose the Game !";
+            document.querySelector('.score').textContent =0;
+        }
+        
     }
 }) 
